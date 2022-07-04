@@ -5,8 +5,13 @@
     <li>id:<%= post.id %></li>
     <li>title:<%= post.title %></li>
     <li>content:<%= post.content %></li>
-    <li><%= link_to "show this post #{post.id}" ,post_path(post) %></li>
-    <li><%= link_to "edit this post #{post.id}" ,edit_post_path(post) %></li>
+    <li><%= link_to "show this post #{post.id}", post_path(post) %></li>
+    <li><%= link_to "edit this post #{post.id}", edit_post_path(post) %></li>
+    <li>
+      <%= form_for post, url: post_path(post), method: :delete do |f| %>
+        <%= f.submit 'delete' %>
+      <% end %>
+    </li>
   </ul>
 <% end %>
 
