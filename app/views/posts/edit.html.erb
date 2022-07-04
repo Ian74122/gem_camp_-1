@@ -1,0 +1,11 @@
+<h1>Edit Post Id: <%= @post.id %></h1>
+
+<%= form_for @post, url: post_path(@post), method: :patch do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :content %>
+  <%= f.text_field :content %>
+
+  <%= f.submit %>
+<% end %>
