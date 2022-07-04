@@ -1,0 +1,9 @@
+<h1>Post list</h1>
+
+<% @posts.each do |post| %>
+  <ul>
+    <li>id:<%= post.id %></li>
+    <li>title:<%= post.title %></li>
+    <li>content:<%= post.content %></li>
+  </ul>
+<% end %>
