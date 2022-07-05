@@ -3,5 +3,7 @@ Rails.application.routes.draw do
   get "welcome" => "welcome#index"
 
   root :to => "welcome#index"
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
 end

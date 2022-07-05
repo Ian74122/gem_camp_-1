@@ -1,0 +1,18 @@
+<h1><%= @post.id %></h1>
+<ul>
+  <li><%= @post.title %></li>
+  <li><%= @post.content %></li>
+</ul>
+
+<table>
+  <th>
+  <td>id</td>
+  <td>content</td>
+  </th>
+  <% @comments.each do |comment| %>
+    <tr>
+      <td><%= comment.id %></td>
+      <td><%= comment.content %></td>
+    </tr>
+  <% end %>
+</table>
