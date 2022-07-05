@@ -13,6 +13,7 @@
     <tr>
       <td><%= comment.id %></td>
       <td><%= comment.content %></td>
+      <td><%= link_to 'edit', edit_post_comment_path(@post, comment) %></td>
     </tr>
   <% end %>
 </table>

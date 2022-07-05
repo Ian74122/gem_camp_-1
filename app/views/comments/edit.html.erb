@@ -1,0 +1,7 @@
+<h1>Edit Post id: <%= @post.id %>, Comment ID:<%= @comment.id %></h1>
+
+<%= form_for @comment, url: post_comment_path(@post, @comment), method: :patch do |f| %>
+  <%= f.label :content %>
+  <%= f.text_area :content %>
+  <%= f.submit %>
+<% end %>
