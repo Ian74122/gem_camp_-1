@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_post
-  before_action :set_comment, only: [:edit, :update]
+  before_action :set_comment, only: [:edit, :update, :destroy]
 
   def index
     @comments = @post.comments
@@ -27,6 +27,12 @@ class CommentsController < ApplicationController
       redirect_to post_comments_path(@post, @comment)
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @comment.destroy
+      redirect_to post_comments_path(@post)
     end
   end
 
