@@ -2,6 +2,7 @@
 
 <% @posts.each do |post| %>
   <ul>
+    <li><%= post.user.email %></li>
     <li>id:<%= post.id %></li>
     <li>title:<%= post.title %></li>
     <li>content:<%= post.content %></li>
