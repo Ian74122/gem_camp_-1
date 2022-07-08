@@ -1,5 +1,5 @@
-<% if @post.errors.any? %>
-  <% @post.errors.full_messages.each do |message| %>
+<% if post.errors.any? %>
+  <% post.errors.full_messages.each do |message| %>
     <li><%= message %></li>
   <% end %>
 <% end %>
