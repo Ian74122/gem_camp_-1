@@ -1,0 +1,12 @@
+<% if @post.errors.any? %>
+  <% @post.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+  <% end %>
+<% end %>
+<%= f.label :title %>
+<%= f.text_field :title %>
+
+<%= f.label :content %>
+<%= f.text_field :content %>
+
+<%= f.submit %>
