@@ -1,0 +1,11 @@
+<h1>Category index</h1>
+<% @categories.each do |category| %>
+  <ul>
+    <li><%= category.id %></li>
+    <li><%= category.name %></li>
+    <li><%= link_to 'edit', edit_category_path(category) %></li>
+    <li><%= button_to 'destroy', category_path(category), method: :delete %></li>
+  </ul>
+<% end %>
+
+<%= link_to 'new', new_category_path %>

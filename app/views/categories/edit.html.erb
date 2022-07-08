@@ -1,0 +1,4 @@
+<h1>edit category</h1>
+<%= form_for @category, url: category_path(@category), method: :patch do |f| %>
+  <%= render partial: 'form', locals: { f: f, category: @category } %>
+<% end %>
