@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :set_own_post, only: [:edit, :update, :destroy]
 
   def index
-    @posts = Post.all.includes(:user)
+    @posts = Post.all.includes(:user, :categories)
   end
 
   def new

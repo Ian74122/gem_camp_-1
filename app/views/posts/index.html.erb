@@ -6,6 +6,7 @@
     <li>id:<%= post.id %></li>
     <li>title:<%= post.title %></li>
     <li>content:<%= post.content %></li>
+    <li><%= post.categories.pluck(:name).join(',') %></li>
     <li><%= link_to :comments, post_comments_path(post) %></li>
     <li><%= link_to "show this post #{post.id}", post_path(post) %></li>
     <li><%= link_to "edit this post #{post.id}", edit_post_path(post) if post.user == current_user %></li>
