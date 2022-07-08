@@ -9,4 +9,7 @@
 <%= f.label :content %>
 <%= f.text_field :content %>
 
+<%= f.label :category_ids %>
+<%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
+
 <%= f.submit %>
