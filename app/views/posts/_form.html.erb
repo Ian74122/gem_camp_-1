@@ -3,13 +3,18 @@
     <li><%= message %></li>
   <% end %>
 <% end %>
-<%= f.label :title %>
-<%= f.text_field :title %>
-
-<%= f.label :content %>
-<%= f.text_field :content %>
-
-<%= f.label :category_ids %>
-<%= f.collection_check_boxes :category_ids, Category.all, :id, :name %>
-
-<%= f.submit %>
+<div class="form-group">
+  <%= f.label :title %>
+  <%= f.text_field :title, class: 'form-control' %>
+</div>
+<div class="form-group">
+  <%= f.label :content %>
+  <%= f.text_field :content, class: 'form-control' %>
+</div>
+<div class="form-check">
+  <%= f.label :category_ids %>
+  <%= f.collection_check_boxes :category_ids, Category.all, :id, :name, class: 'form-check-input' %>
+</div>
+<div class="form-group">
+  <%= f.submit class: 'btn btn-danger' %>
+</div>
