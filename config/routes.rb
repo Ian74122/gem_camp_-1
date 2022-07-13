@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   resources :categories, except: :show
 
   namespace :admin do
-    resources :posts
+    resources :posts do
+      post 'publish'
+    end
   end
 end
