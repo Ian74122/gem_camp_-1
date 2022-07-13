@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   root :to => "welcome#index"
   resources :posts do
+    post 'check'
     resources :comments
   end
   resources :categories, except: :show

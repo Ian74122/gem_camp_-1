@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :index
   before_action :set_post, only: :show
   before_action :set_own_post, only: [:edit, :update, :destroy]
-
   def index
+    # @posts = Post.published.includes(:user, :categories).page(params[:page]).per(5)
     @posts = Post.includes(:user, :categories).page(params[:page]).per(5)
   end
 
@@ -35,6 +35,15 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
+      redirect_to posts_path
+    end
+  end
+
+  def check
+    @post = current_user.posts.find_by_id(params[:post_id])
+    if @post.may_check?
+      @post.check!
+      flash[:notice] = "this order state change to inspecting"
       redirect_to posts_path
     end
   end

@@ -1,5 +1,5 @@
 <h1>Edit Post Id: <%= @post.id %></h1>
-
+<%= button_to 'check this post', post_check_path(@post), method: :post if @post.may_check? %>
 <%= form_for @post, url: post_path(@post), method: :patch do |f| %>
   <%= render partial: 'form', locals: {f: f, post: @post} %>
 <% end %>
