@@ -13,6 +13,7 @@
   <body class="container">
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
+      <%= link_to 'Admin Posts', admin_posts_path if current_user&.admin? %>
       <%= yield %>
   </body>
 </html>
