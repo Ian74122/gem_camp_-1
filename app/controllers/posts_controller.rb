@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: :show
   before_action :set_own_post, only: [:edit, :update, :destroy]
+  before_action :validate_inspecting, only: [:edit, :update]
   def index
     @posts = current_user.posts.includes(:user, :categories).page(params[:page]).per(5)
   end
@@ -24,6 +25,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      @post.edit! if @post.may_edit?
       redirect_to posts_path
     else
       render :edit
@@ -63,5 +65,12 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  end
+
+  def validate_inspecting
+    if @post.inspecting?
+      flash[:notice] = "You can't edit this post when inspecting"
+      redirect_to post_path(@post)
+    end
   end
 end
