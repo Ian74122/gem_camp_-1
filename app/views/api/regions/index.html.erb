@@ -1,0 +1,18 @@
+<h1>All Regions</h1>
+
+<table class="table table-striped table-hover table-bordered">
+  <thead>
+  <tr>
+    <th>code</th>
+    <th>name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @regions.each do |region| %>
+    <tr>
+      <td><%= region.code %></td>
+      <td><%= region.name %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

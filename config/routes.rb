@@ -15,4 +15,8 @@ Rails.application.routes.draw do
       post 'publish'
     end
   end
+
+  namespace :api do
+    resources :regions, only: :index
+  end
 end
