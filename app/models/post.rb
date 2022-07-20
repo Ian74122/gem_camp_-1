@@ -10,6 +10,8 @@ class Post < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  after_create :generate_serial_number
+
   include AASM
   aasm column: :state do
     state :pending, initial: true
@@ -26,5 +28,10 @@ class Post < ApplicationRecord
     event :edit do
       transitions from: :published, to: :pending
     end
+  end
+
+  def generate_serial_number
+    count_post_today = Post.where(created_at: DateTime.current.beginning_of_day..DateTime.current.end_of_day).count
+    update(serial_number: "#{Date.current.strftime('%y%m%d')}#{count_post_today.to_s.rjust(4, '0')}")
   end
 end
