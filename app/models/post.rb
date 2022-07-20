@@ -32,6 +32,6 @@ class Post < ApplicationRecord
 
   def generate_serial_number
     count_post_today = Post.where(created_at: DateTime.current.beginning_of_day..DateTime.current.end_of_day).count
-    update(serial_number: "#{Date.current.strftime('%y%m%d')}#{count_post_today.to_s.rjust(4, '0')}")
+    self.update(serial_number: "#{Date.current.strftime('%y%m%d')}#{count_post_today.to_s.rjust(4, '0')}")
   end
 end
