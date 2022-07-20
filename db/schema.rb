@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_13_024712) do
+ActiveRecord::Schema.define(version: 2022_07_20_034148) do
 
   create_table "categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -43,6 +43,8 @@ ActiveRecord::Schema.define(version: 2022_07_13_024712) do
     t.bigint "user_id"
     t.string "image"
     t.string "state"
+    t.string "serial_number"
+    t.index ["serial_number"], name: "index_posts_on_serial_number"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
