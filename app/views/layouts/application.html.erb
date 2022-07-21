@@ -12,6 +12,8 @@
 
   <body class="container">
       <p><%= t( "hello", name: current_user.email) if current_user %></p>
+      <%= link_to "EN", params.permit!.merge(locale: 'en') %>
+      <%= link_to "zh-CN", params.permit!.merge(locale: 'zh-CN') %>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= link_to 'Admin Posts', admin_posts_path if current_user&.admin? %>
