@@ -1,0 +1,16 @@
+zh-CN:
+  models:
+    post:
+      one: 文章
+      other: 多篇文章
+  activerecord:
+    attributes:
+      post:
+        id: ID
+        title: 標題
+        content: 內容
+        created_at: 生成時間
+        categories: 類別
+        image: 圖片
+      user:
+        email: 信箱

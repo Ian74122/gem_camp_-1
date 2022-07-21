@@ -1,15 +1,15 @@
-<h1><%= t("post_list") %></h1>
+<h1><%= t('post_list') %></h1>
 <table class="table table-striped table-hover">
   <thead>
   <tr>
-    <th scope="col">email</th>
-    <th scope="col">id</th>
-    <th scope="col">title</th>
-    <th scope="col">content</th>
-    <th scope="col">categories</th>
-    <th scope="col">created_at</th>
-    <th scope="col">image</th>
-    <th scope="col">actions</th>
+    <th scope="col"><%= User.human_attribute_name(:email) %></th>
+    <th scope="col"><%= Post.human_attribute_name(:id) %></th>
+    <th scope="col"><%= Post.human_attribute_name(:title) %></th>
+    <th scope="col"><%= Post.human_attribute_name(:content) %></th>
+    <th scope="col"><%= Post.human_attribute_name(:categories) %></th>
+    <th scope="col"><%= Post.human_attribute_name(:created_at) %></th>
+    <th scope="col"><%= Post.human_attribute_name(:image) %></th>
+    <th scope="col"><%= t('common.actions') %></th>
   </tr>
   </thead>
   <tbody>

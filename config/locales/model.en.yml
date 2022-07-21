@@ -1,0 +1,16 @@
+zh-CN:
+  models:
+    post:
+      one: Post
+      other: Posts
+  activerecord:
+    attributes:
+      post:
+        id: ID
+        title: Title
+        content: Content
+        created_at: Created At
+        categories: Categories
+        image: Image
+      user:
+        email: Email

@@ -1,3 +1,5 @@
 zh-CN:
   hello: "您好 %{name},"
   post_list: 活動清單
+  common:
+    actions: 操作
