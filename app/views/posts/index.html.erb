@@ -7,6 +7,7 @@
     <th scope="col">title</th>
     <th scope="col">content</th>
     <th scope="col">categories</th>
+    <th scope="col">created_at</th>
     <th scope="col">image</th>
     <th scope="col">actions</th>
   </tr>
@@ -19,6 +20,7 @@
       <td><%= post.title %></td>
       <td><%= post.content %></td>
       <td><%= post.categories.pluck(:name).join(',') %></td>
+      <td><%= post.created_at.to_s(:db) %></td>
       <td><%= image_tag "http://localhost:3000/#{post.image.url}" if post.image? %></td>
       <td>
         <%= post.categories.pluck(:name).join(',') %>
