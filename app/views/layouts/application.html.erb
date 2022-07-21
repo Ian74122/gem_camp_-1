@@ -11,7 +11,7 @@
   </head>
 
   <body class="container">
-      <p><%= current_user&.email %></p>
+      <p><%= t( "hello", name: current_user.email) if current_user %></p>
       <p class="notice"><%= notice %></p>
       <p class="alert"><%= alert %></p>
       <%= link_to 'Admin Posts', admin_posts_path if current_user&.admin? %>
