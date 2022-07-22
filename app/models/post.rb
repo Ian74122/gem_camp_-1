@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :post_categoryships
   has_many :categories, through: :post_categoryships
-
+  has_one :posts_count_preview
   mount_uploader :image, ImageUploader
 
   after_commit :generate_serial_number
