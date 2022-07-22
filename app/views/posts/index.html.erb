@@ -9,6 +9,7 @@
     <th scope="col"><%= Post.human_attribute_name(:categories) %></th>
     <th scope="col"><%= Post.human_attribute_name(:created_at) %></th>
     <th scope="col"><%= Post.human_attribute_name(:image) %></th>
+    <th scope="col"><%= PostsCountPreview.human_attribute_name(:count) %></th>
     <th scope="col"><%= t('common.actions') %></th>
   </tr>
   </thead>
@@ -22,6 +23,7 @@
       <td><%= post.categories.pluck(:name).join(',') %></td>
       <td><%= post.created_at.to_s(:db) %></td>
       <td><%= image_tag "http://localhost:3000/#{post.image.url}" if post.image? %></td>
+      <td><%= post.posts_count_preview.count %></td>
       <td>
         <%= post.categories.pluck(:name).join(',') %>
         <%= link_to :comments, post_comments_path(post) %>

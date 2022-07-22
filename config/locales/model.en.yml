@@ -3,6 +3,9 @@ zh-CN:
     post:
       one: Post
       other: Posts
+    posts_count_preview:
+      one: Post Comment Count
+      other: Post Comment Count
   activerecord:
     attributes:
       post:
@@ -14,3 +17,5 @@ zh-CN:
         image: Image
       user:
         email: Email
+      posts_count_preview:
+        count: Post Comment Count

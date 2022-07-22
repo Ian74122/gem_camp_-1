@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   require "csv"
 
   def index
-    @posts = current_user.posts.includes(:user, :categories).page(params[:page]).per(5)
+    @posts = current_user.posts.includes(:user, :categories, :posts_count_preview).page(params[:page]).per(5)
 
     respond_to do |format|
       format.html

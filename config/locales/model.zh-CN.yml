@@ -3,6 +3,9 @@ zh-CN:
     post:
       one: 文章
       other: 多篇文章
+    posts_count_preview:
+      one: 留言總數
+      other: 留言總數
   activerecord:
     attributes:
       post:
@@ -14,3 +17,5 @@ zh-CN:
         image: 圖片
       user:
         email: 信箱
+      posts_count_preview:
+        count: 留言總數
