@@ -3,8 +3,23 @@ class PostsController < ApplicationController
   before_action :set_post, only: :show
   before_action :set_own_post, only: [:edit, :update, :destroy]
   before_action :validate_inspecting, only: [:edit, :update]
+  require "csv"
+
   def index
     @posts = current_user.posts.includes(:user, :categories).page(params[:page]).per(5)
+
+    respond_to do |format|
+      format.html
+      format.csv {
+        csv_string = CSV.generate do |csv|
+          csv << [User.human_attribute_name(:email), Post.human_attribute_name(:id), Post.human_attribute_name(:title), Post.human_attribute_name(:content), Post.human_attribute_name(:categories), Post.human_attribute_name(:created_at)]
+          @posts.each do |post|
+            csv << [post.user.email, post.id, post.title, post.content, post.categories.pluck(:name).join(','), post.created_at]
+          end
+        end
+        send_data csv_string, filename: "posts-#{Time.now.to_s(:number)}.csv"
+      }
+    end
   end
 
   def new

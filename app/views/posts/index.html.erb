@@ -37,6 +37,6 @@
   <% end %>
   </tbody>
 </table>
-
+<%= link_to "Export CSV", posts_path(format: :csv), class: "btn btn-default" %>
 <%= link_to 'New', new_post_path, class: 'btn btn-success' %>
 <%= paginate @posts %>
