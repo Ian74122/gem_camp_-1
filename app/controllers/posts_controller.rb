@@ -19,6 +19,7 @@ class PostsController < ApplicationController
         end
         send_data csv_string, filename: "posts-#{Time.now.to_s(:number)}.csv"
       }
+      format.xml
     end
   end
 
