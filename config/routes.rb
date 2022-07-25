@@ -10,9 +10,11 @@ Rails.application.routes.draw do
   end
   resources :categories, except: :show
 
-  namespace :admin do
-    resources :posts do
-      post 'publish'
+  constraints(AdminDomainConstraint.new) do
+    namespace :admin do
+      resources :posts do
+        post 'publish'
+      end
     end
   end
 
