@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
   devise_for :users
-  get "welcome/say_hello" => "welcome#say"
-  get "welcome" => "welcome#index"
+  constraints(ClientDomainConstraint.new) do
+    get "welcome/say_hello" => "welcome#say"
+    get "welcome" => "welcome#index"
 
-  root :to => "welcome#index"
-  resources :posts do
-    post 'check'
-    resources :comments
+    root :to => "welcome#index"
+    resources :posts do
+      post 'check'
+      resources :comments
+    end
+    resources :categories, except: :show
   end
-  resources :categories, except: :show
-
   constraints(AdminDomainConstraint.new) do
     namespace :admin do
       resources :posts do
