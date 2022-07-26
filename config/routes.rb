@@ -23,4 +23,7 @@ Rails.application.routes.draw do
     resources :regions, only: :index, defaults: { format: :json }
     resources :provinces, only: :index, defaults: { format: :json }
   end
+
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
 end
