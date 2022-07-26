@@ -34,6 +34,7 @@ services:
     depends_on:
       - db
       - redis
+      - sidekiq
 
   # Redis
   redis:
@@ -52,6 +53,11 @@ services:
     ports:
       - 3035:3035
 
+  sidekiq:
+    <<: *ror
+    command: bundle exec sidekiq -C config/sidekiq.yml
+    depends_on:
+      - redis
 #Volumes
 volumes:
   bundle-volume:
