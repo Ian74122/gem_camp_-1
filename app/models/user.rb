@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :trackable
 
   has_many :posts
+  has_many :orders
   after_update :reload_geo_location!
 
   def client?
