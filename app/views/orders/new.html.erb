@@ -1,0 +1,15 @@
+<%= form_for @order, url: orders_path, method: :post do |f| %>
+  <% if @order.errors.any? %>
+    <% @order.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :amount %>
+    <%= f.number_field :amount, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit class: 'btn btn-danger' %>
+  </div>
+<% end %>

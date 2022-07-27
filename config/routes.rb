@@ -9,6 +9,7 @@ Rails.application.routes.draw do
       post 'check'
       resources :comments
     end
+    resources :orders, only: [:new, :create]
     resources :categories, except: :show
   end
   constraints(AdminDomainConstraint.new) do
