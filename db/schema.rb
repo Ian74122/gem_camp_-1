@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_27_062444) do
+ActiveRecord::Schema.define(version: 2022_07_27_062757) do
 
   create_table "categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 2022_07_27_062444) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
+  end
+
+  create_table "orders", charset: "utf8mb4", force: :cascade do |t|
+    t.bigint "user_id"
+    t.decimal "amount", precision: 8, scale: 2, default: "0.0"
+    t.string "state", null: false
+    t.datetime "paid_at", precision: 6
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "post_categoryships", charset: "utf8mb4", force: :cascade do |t|
