@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_26_031406) do
+ActiveRecord::Schema.define(version: 2022_07_27_062444) do
 
   create_table "categories", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(version: 2022_07_26_031406) do
     t.string "role", default: "client"
     t.string "country"
     t.string "city"
+    t.decimal "balance", precision: 8, scale: 2, default: "0.0"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
