@@ -50,9 +50,25 @@ class XxxPayDepositService
                                      Authorization: "Bearer #{auth_token}",
                                      'Content-Type': Request_Content_Type
                                    }
-    byebug
     response = JSON.parse(raw_response)
     response['data']['balance']
+  end
+
+  def transition_query(order)
+    params = {
+      merchantNo: merchant_id,
+      merchantOrder: order.id,
+      dateTime: datetime
+    }
+    params[:signature] = sign(params, pay_key)
+    raw_response = RestClient.post "#{url}/transaction/deposit/verify",
+                                   generate_query_string(params),
+                                   {
+                                     Authorization: "Bearer #{auth_token}",
+                                     'Content-Type': Request_Content_Type
+                                   }
+    response = JSON.parse(raw_response)
+    response['data']['isSuccess'] == true
   end
 
   def auth_token
