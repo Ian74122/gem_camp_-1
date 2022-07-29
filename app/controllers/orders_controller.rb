@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @order = Order.new
   end
@@ -9,12 +10,16 @@ class OrdersController < ApplicationController
     @order.user = current_user
     if @order.save
       # call merchant
-      # service = XxxPayService.new
-      # serivee.depoist(order) -> if this one can get some data
-      @order.submit!
-      # if submit redirect the payment url
-      # else
-      # @order.fail!
+      service = XxxPayDepositService.new
+      data = service.deposit(@order)
+      if data[:url].present?
+        @order.submit!
+        redirect_to data[:url]
+      else
+        @order.fail!
+        flash[:alert] = "merchant create failed"
+        redirect_to new_order_path
+      end
     else
       render :new
     end
