@@ -16,11 +16,8 @@ class Admin::PostsController < ApplicationController
   end
 
   private
-  
+
   def check_admin
-    unless current_user.admin?
-      flash[:notice] = "You do not have permission"
-      redirect_to posts_path
-    end
+    authorize current_user, :check_admin?, policy_class: AdminPolicy
   end
 end
