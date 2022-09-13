@@ -4,3 +4,5 @@ en:
     post_policy:
       edit?: you are not authorized to edit this post
       update?: you are not authorized to edit this post
+    admin_policy:
+      check_admin?: you are not admin
