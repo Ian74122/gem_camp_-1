@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_post, only: :show
-  before_action :set_own_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :validate_inspecting, only: [:edit, :update]
   require "csv"
 
@@ -37,9 +36,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    authorize @post
+  end
 
   def update
+    authorize @post
     if @post.update(post_params)
       @post.edit! if @post.may_edit?
       redirect_to posts_path
@@ -48,7 +50,9 @@ class PostsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    authorize @post
+  end
 
   def destroy
     if @post.destroy
@@ -66,14 +70,6 @@ class PostsController < ApplicationController
   end
 
   private
-
-  def set_own_post
-    @post = current_user.posts.find_by_id(params[:id])
-    if @post.nil?
-      flash[:alert] = 'this post not belongs_to you or not exists'
-      redirect_to posts_path
-    end
-  end
 
   def post_params
     params.require(:post).permit(:title, :content, :image, category_ids: [])
