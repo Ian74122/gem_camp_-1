@@ -37,11 +37,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    authorize @post
+    authorize @post, policy_class: PostPolicy
   end
 
   def update
-    authorize @post
+    authorize @post, policy_class: PostPolicy
     if @post.update(post_params)
       @post.edit! if @post.may_edit?
       redirect_to posts_path
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    authorize @post
+    authorize @post, policy_class: PostPolicy
   end
 
   def destroy
